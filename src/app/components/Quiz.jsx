@@ -1,26 +1,37 @@
 "use client";
-import { useState } from "react";
-import React from "react";
-import { data } from "autoprefixer";
-// import Card from "./components/Card";
+import React, { useState } from "react";
 
 function Quiz(props) {
+  // GET svarmuligheder fra Supabase
   const [visible, setVisible] = useState(0);
+
+  // Filter the data based on props.step === 1
+  const filteredDataStepOne = props.data.filter((quest) => quest.step === 1);
+  const filteredDataStepTwo = props.data.filter((quest) => quest.step === 2);
+  const filteredDataStepThree = props.data.filter((quest) => quest.step === 3);
+  const filteredDataStepFour = props.data.filter((quest) => quest.step === 4);
 
   const views = [
     <section>
-      if (props.step === 1)
-      {
-        <div>
-          {data.map((question) => (
-            <p key={props.id}>{question.svarmulighed}</p>
-          ))}
-        </div>
-      }
+      {filteredDataStepOne.map((quest) => (
+        <p>{quest.svarmulighed}</p>
+      ))}
     </section>,
-    <section>2</section>,
-    <section>3</section>,
-    <section>4</section>,
+    <section>
+      {filteredDataStepTwo.map((quest) => (
+        <p>{quest.svarmulighed}</p>
+      ))}
+    </section>,
+    <section>
+      {filteredDataStepThree.map((quest) => (
+        <p>{quest.svarmulighed}</p>
+      ))}
+    </section>,
+    <section>
+      {filteredDataStepFour.map((quest) => (
+        <p>{quest.svarmulighed}</p>
+      ))}
+    </section>,
   ];
 
   function setNextView() {
@@ -31,6 +42,7 @@ function Quiz(props) {
       return oldValue + 1;
     });
   }
+
   return (
     <div>
       {views[visible]}
