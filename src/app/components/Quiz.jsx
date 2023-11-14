@@ -13,6 +13,7 @@ function Quiz(props) {
 
   const views = [
     <section>
+      <p>test</p>
       {filteredDataStepOne.map((quest) => (
         <p>{quest.svarmulighed}</p>
       ))}
