@@ -1,5 +1,6 @@
+import Quiz from "./components/Quiz";
 import React from "react";
-import Card from "./components/Card";
+// import Card from "./components/Card";
 
 export default async function page() {
   // GET svarmuligheder fra Supabase
@@ -14,10 +15,11 @@ export default async function page() {
     }
   );
   const data = await res.json();
-  console.log(data);
+
   return (
     <main>
       <h1>Matas</h1>
+      <Quiz data={...data} />
     </main>
   );
 }
