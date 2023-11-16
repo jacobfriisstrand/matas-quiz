@@ -1,11 +1,24 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import StartPage from "./StartPage";
 import EndPage from "./EndPage";
 
 function Quiz(props) {
   const [step, setStep] = useState(0);
-  // console.log(step);
+  const [checkboxesChecked, setCheckboxesChecked] = useState(false);
+
+  const handleCheckboxChange = (e) => {
+    // Logic to track checkbox state
+    const checkedCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+    setCheckboxesChecked(checkedCheckboxes.length === 2);
+  };
+
+  useEffect(() => {
+    if (step === 1) {
+      // Reset checkbox state on step change
+      setCheckboxesChecked(false);
+    }
+  }, [step]);
 
   return (
     <article>
@@ -25,7 +38,7 @@ function Quiz(props) {
         .filter((item) => item.step === step && item.svarmulighed !== null)
         .map((item) => (
           <div key={item.id}>
-            {step === 1 ? <input type="checkbox" name="svarmulighed" id={item.id} value={item.svarmulighed} /> : <input type="radio" name="svarmulighed" id={item.id} value={item.svarmulighed} />}
+            {step === 1 ? <input type="checkbox" name="svarmulighed" id={item.id} value={item.svarmulighed} onChange={handleCheckboxChange} /> : <input type="radio" name="svarmulighed" id={item.id} value={item.svarmulighed} />}
             <label htmlFor={item.id}>{item.svarmulighed}</label>
           </div>
         ))}
@@ -42,7 +55,10 @@ function Quiz(props) {
       {step < 5 && (
         <button
           onClick={() => {
-            console.log(step);
+            if (step === 1 && !checkboxesChecked) {
+              setStep((prevStep) => prevStep + 0);
+              return;
+            }
             setStep((prevStep) => prevStep + 1);
           }}
         >
