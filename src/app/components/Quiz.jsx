@@ -7,15 +7,24 @@ function Quiz(props) {
 
   return (
     <article>
-      <h1>Quiz</h1>
-      {step === 0 && <p>Hej</p>}
-      {step === 5 && <p>Farvel</p>}
+      <h2>Quiz</h2>
       {props.data
         .filter((item) => item.step === step)
         .map((item) => (
           <div key={item.id}>
-            <input type="checkbox" name="svarmulighed" id={item.id} value={item.svarmulighed} />
-            <label htmlFor={item.id}>{item.svarmulighed}</label>
+            <h3>{item.questions}</h3>
+            <p>{item.options}</p>
+          </div>
+        ))}
+
+      {step === 0 && <p>Hej</p>}
+      {step === 5 && <p>Farvel</p>}
+      {props.data
+        .filter((item) => item.step === step && item.svarmulighed !== null)
+        .map((item) => (
+          <div key={item.id}>
+              <input type="checkbox" name="svarmulighed" id={item.id} value={item.svarmulighed} />
+              <label htmlFor={item.id}>{item.svarmulighed}</label>
           </div>
         ))}
       {step > 0 && step !== 5 && (
