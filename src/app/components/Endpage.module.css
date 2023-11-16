@@ -1,0 +1,10 @@
+.textContainer {
+display: grid;
+place-content: center;
+max-width: 80%;
+}
+
+.button {
+    border-radius: 10px;
+    text-align: center;
+}
