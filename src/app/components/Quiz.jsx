@@ -19,14 +19,14 @@ function Quiz(props) {
           </div>
         ))}
 
-      {step === 0 && <StartPage/>}
-      {step === 5 && <EndPage/>}
+      {step === 0 && <StartPage />}
+      {step === 5 && <EndPage />}
       {props.data
         .filter((item) => item.step === step && item.svarmulighed !== null)
         .map((item) => (
           <div key={item.id}>
-              <input type="checkbox" name="svarmulighed" id={item.id} value={item.svarmulighed} />
-              <label htmlFor={item.id}>{item.svarmulighed}</label>
+            {step === 1 ? <input type="checkbox" name="svarmulighed" id={item.id} value={item.svarmulighed} /> : <input type="radio" name="svarmulighed" id={item.id} value={item.svarmulighed} />}
+            <label htmlFor={item.id}>{item.svarmulighed}</label>
           </div>
         ))}
       {step > 0 && step !== 5 && (
