@@ -7,4 +7,7 @@ max-width: 80%;
 .button {
     border-radius: 10px;
     text-align: center;
+    background-color: #002643;
+    color: white;
+    padding: 10px 30px;
 }
