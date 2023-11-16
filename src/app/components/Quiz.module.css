@@ -1,0 +1,9 @@
+.inputContainer {
+  display: grid;
+  place-items: center;
+  width: fit-content;
+}
+
+.inputChildren {
+  grid-area: 1 / 1;
+}
