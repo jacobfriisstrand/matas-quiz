@@ -18,22 +18,26 @@ function Quiz(props) {
             <label htmlFor={item.id}>{item.svarmulighed}</label>
           </div>
         ))}
-      <button
-        onClick={() => {
-          console.log(step);
-          setStep((prevStep) => prevStep - 1);
-        }}
-      >
-        Prev
-      </button>
-      <button
-        onClick={() => {
-          console.log(step);
-          setStep((prevStep) => prevStep + 1);
-        }}
-      >
-        Next
-      </button>
+      {step > 0 && step !== 5 && (
+        <button
+          onClick={() => {
+            console.log(step);
+            setStep((prevStep) => prevStep - 1);
+          }}
+        >
+          Prev
+        </button>
+      )}
+      {step < 5 && (
+        <button
+          onClick={() => {
+            console.log(step);
+            setStep((prevStep) => prevStep + 1);
+          }}
+        >
+          Next
+        </button>
+      )}
     </article>
   );
 }
