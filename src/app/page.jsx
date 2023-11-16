@@ -1,6 +1,7 @@
 import Quiz from "./components/Quiz";
 import React from "react";
 import Card from "./components/Card";
+import EndPage from "./components/EndPage";
 
 // Udkommenterring skal fjernes, hvis database skal opdateres. 
 //export const dynamic = "force-dynamic";
@@ -24,6 +25,7 @@ export default async function page() {
     <main>
       <h1>Matas</h1>
       <Quiz data={data} />
+      <EndPage />
     </main>
   );
 }

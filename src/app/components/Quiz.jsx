@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import StartPage from "./StartPage";
 import EndPage from "./EndPage";
 import styles from "./Quiz.module.css";
