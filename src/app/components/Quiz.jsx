@@ -6,6 +6,20 @@ import styles from "./Quiz.module.css";
 
 function Quiz(props) {
   const [step, setStep] = useState(0);
+  const [checkboxesChecked, setCheckboxesChecked] = useState(false);
+
+  const handleCheckboxChange = (e) => {
+    // Logic to track checkbox state
+    const checkedCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+    setCheckboxesChecked(checkedCheckboxes.length === 2);
+  };
+
+  useEffect(() => {
+    if (step === 1) {
+      // Reset checkbox state on step change
+      setCheckboxesChecked(false);
+    }
+  }, [step]);
   // console.log(step);
 
   return (
@@ -27,7 +41,25 @@ function Quiz(props) {
           .filter((item) => item.step === step && item.svarmulighed !== null)
           .map((item) => (
             <div key={item.id} className={styles.inputContainer}>
-              <input className={`${styles.inputChildren} checked:bg-black peer hover:bg-black appearance-none w-full focus-visible:border-4 border-black border p-5 rounded-full`} type="checkbox" name="svarmulighed" id={item.id} value={item.svarmulighed} />
+              {step === 1 ? (
+                <input
+                  onChange={handleCheckboxChange}
+                  className={`${styles.inputChildren} checked:bg-black peer hover:bg-black appearance-none w-full focus-visible:border-4 border-black border p-5 rounded-full`}
+                  type="checkbox"
+                  name="svarmulighed"
+                  id={item.id}
+                  value={item.svarmulighed}
+                />
+              ) : (
+                <input
+                  onChange={handleCheckboxChange}
+                  className={`${styles.inputChildren} checked:bg-black peer hover:bg-black appearance-none w-full focus-visible:border-4 border-black border p-5 rounded-full`}
+                  type="radio"
+                  name="svarmulighed"
+                  id={item.id}
+                  value={item.svarmulighed}
+                />
+              )}
               <label className={`${styles.inputChildren} p-5 cursor-pointer peer-checked:text-white peer-hover:text-white`} htmlFor={item.id}>
                 {item.svarmulighed}
               </label>
@@ -47,7 +79,10 @@ function Quiz(props) {
       {step < 5 && (
         <button
           onClick={() => {
-            console.log(step);
+            if (step === 1 && !checkboxesChecked) {
+              setStep((prevStep) => prevStep + 0);
+              return;
+            }
             setStep((prevStep) => prevStep + 1);
           }}
         >
