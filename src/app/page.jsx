@@ -2,6 +2,9 @@ import Quiz from "./components/Quiz";
 import React from "react";
 import Card from "./components/Card";
 
+// Udkommenterring skal fjernes, hvis database skal opdateres. 
+//export const dynamic = "force-dynamic";
+
 export default async function page() {
   // GET svarmuligheder fra Supabase
   const res = await fetch(
