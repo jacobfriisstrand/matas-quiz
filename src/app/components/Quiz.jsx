@@ -2,53 +2,39 @@
 import React, { useState } from "react";
 
 function Quiz(props) {
-  // GET svarmuligheder fra Supabase
-  const [visible, setVisible] = useState(0);
-
-  // Filter the data based on props.step === 1
-  const filteredDataStepOne = props.data.filter((quest) => quest.step === 1);
-  const filteredDataStepTwo = props.data.filter((quest) => quest.step === 2);
-  const filteredDataStepThree = props.data.filter((quest) => quest.step === 3);
-  const filteredDataStepFour = props.data.filter((quest) => quest.step === 4);
-
-  const views = [
-    <section>
-      <p>test</p>
-      {filteredDataStepOne.map((quest) => (
-        <p>{quest.svarmulighed}</p>
-      ))}
-    </section>,
-    <section>
-      {filteredDataStepTwo.map((quest) => (
-        <p>{quest.svarmulighed}</p>
-      ))}
-    </section>,
-    <section>
-      {filteredDataStepThree.map((quest) => (
-        <p>{quest.svarmulighed}</p>
-      ))}
-    </section>,
-    <section>
-      {filteredDataStepFour.map((quest) => (
-        <p>{quest.svarmulighed}</p>
-      ))}
-    </section>,
-  ];
-
-  function setNextView() {
-    setVisible((oldValue) => {
-      if (oldValue === views.length - 1) {
-        return 0;
-      }
-      return oldValue + 1;
-    });
-  }
+  const [step, setStep] = useState(0);
+  // console.log(step);
 
   return (
-    <div>
-      {views[visible]}
-      <button onClick={setNextView}>Next view</button>
-    </div>
+    <article>
+      <h1>Quiz</h1>
+      {step === 0 && <p>Hej</p>}
+      {step === 5 && <p>Farvel</p>}
+      {props.data
+        .filter((item) => item.step === step)
+        .map((item) => (
+          <div key={item.id}>
+            <input type="checkbox" name="svarmulighed" id={item.id} value={item.svarmulighed} />
+            <label htmlFor={item.id}>{item.svarmulighed}</label>
+          </div>
+        ))}
+      <button
+        onClick={() => {
+          console.log(step);
+          setStep((prevStep) => prevStep - 1);
+        }}
+      >
+        Prev
+      </button>
+      <button
+        onClick={() => {
+          console.log(step);
+          setStep((prevStep) => prevStep + 1);
+        }}
+      >
+        Next
+      </button>
+    </article>
   );
 }
 
