@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import StartPage from "./StartPage";
 import EndPage from "./EndPage";
-import styles from "./Quiz.module.css";
+import CheckBoxes from "./CheckBoxes";
 
 function Quiz(props) {
   const [step, setStep] = useState(0);
@@ -50,29 +50,7 @@ function Quiz(props) {
         {props.data
           .filter((item) => item.step === step && item.svarmulighed !== null)
           .map((item) => (
-            <div key={item.id} className={styles.inputContainer}>
-              {step === 1 ? (
-                <input
-                  onChange={handleCheckboxChange}
-                  className={`${styles.inputChildren} checked:bg-black peer hover:bg-black appearance-none w-full focus-visible:border-4 border-black border p-5 rounded-full`}
-                  type="checkbox"
-                  name="svarmulighed"
-                  id={item.id}
-                  value={item.svarmulighed}
-                />
-              ) : (
-                <input
-                  className={`${styles.inputChildren} checked:bg-black peer hover:bg-black appearance-none w-full focus-visible:border-4 border-black border p-5 rounded-full`}
-                  type="radio"
-                  name="svarmulighed"
-                  id={item.id}
-                  value={item.svarmulighed}
-                />
-              )}
-              <label className={`${styles.inputChildren} p-5 cursor-pointer peer-checked:text-white peer-hover:text-white`} htmlFor={item.id}>
-                {item.svarmulighed}
-              </label>
-            </div>
+            <CheckBoxes key={item.id} svarmulighed={item.svarmulighed} id={item.id} step={step} handleCheckboxChange={handleCheckboxChange} />
           ))}
       </div>
       {step > 0 && step !== 5 && (
