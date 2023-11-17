@@ -41,6 +41,9 @@ module.exports = {
           900: "#000000",
         },
       },
+      fontFamily: {
+        serif: ["DM Serif Display", "serif"],
+      },
       plugins: [],
     },
   },
