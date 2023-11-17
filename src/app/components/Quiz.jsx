@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import StartPage from "./StartPage";
 import EndPage from "./EndPage";
 import styles from "./Quiz.module.css";
@@ -8,16 +8,26 @@ function Quiz(props) {
   const [step, setStep] = useState(0);
   const [checkboxesChecked, setCheckboxesChecked] = useState(false);
 
+  const ref = useRef([]);
+
   const handleCheckboxChange = (e) => {
-    // Logic to track checkbox state
-    const checkedCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-    setCheckboxesChecked(checkedCheckboxes.length === 2);
+    const checkboxId = e.target.id;
+    const isChecked = e.target.checked;
+
+    if (isChecked) {
+      ref.current.push(checkboxId);
+    } else {
+      ref.current = ref.current.filter((id) => id !== checkboxId);
+    }
+
+    setCheckboxesChecked(ref.current.length >= 2);
   };
 
   useEffect(() => {
     if (step === 1) {
       // Reset checkbox state on step change
       setCheckboxesChecked(false);
+      ref.current.splice(ref);
     }
   }, [step]);
   // console.log(step);
@@ -52,7 +62,6 @@ function Quiz(props) {
                 />
               ) : (
                 <input
-                  onChange={handleCheckboxChange}
                   className={`${styles.inputChildren} checked:bg-black peer hover:bg-black appearance-none w-full focus-visible:border-4 border-black border p-5 rounded-full`}
                   type="radio"
                   name="svarmulighed"
