@@ -1,0 +1,15 @@
+.textContainer {
+display: grid;
+place-content: center;
+padding: 10%;
+}
+
+.button {
+    border-radius: 10px;
+    text-align: center;
+    background-color: #002643;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    margin-top: 2em;
+}
