@@ -8,8 +8,8 @@ function EndPage() {
       <div className={`${styles.textContainer}`}>
       <div >
         <h2>DAGCREME</h2>
-        <h1>TIP</h1>
-        <p className="max-w-[250px]">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-matasBlue-900 font-serif font-semibold">TIP</h1>
+        <p className="max-w-[250px] flex flex-col content-center">
           Hvis du gerne vil gøre noget ekstra for din hud, så brug en serum
           under din dagcreme i din hudplejerutine
         </p>
