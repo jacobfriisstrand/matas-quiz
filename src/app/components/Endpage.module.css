@@ -8,6 +8,7 @@ place-content: center;
     text-align: center;
     background-color: #002643;
     color: white;
-    padding: 10px 30px;
-    margin: 2em;
+    padding: 10px;
+    width: 100%;
+    margin-top: 2em;
 }
