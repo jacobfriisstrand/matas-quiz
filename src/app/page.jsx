@@ -25,7 +25,6 @@ export default async function page() {
     <main>
       <h1>Matas</h1>
       <Quiz data={data} />
-      <EndPage />
     </main>
   );
 }
