@@ -16,6 +16,9 @@ module.exports = {
         matasBrown: {
           200: "#C09B8C",
         },
+        matasBeige: {
+          100: "#D8D1CB",
+        },
         matasPink: {
           700: "#F090B3",
         },
