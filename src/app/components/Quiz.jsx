@@ -33,17 +33,16 @@ function Quiz(props) {
   // console.log(step);
 
   return (
-    <article>
+    <article className="space-y-5">
       <h2>Quiz</h2>
       {props.data
         .filter((item) => item.step === step)
         .map((item) => (
           <div key={item.id}>
-            <h3>{item.questions}</h3>
+            <h3 className="font-serif font-semibold text-2xl">{item.questions}</h3>
             <p>{item.options}</p>
           </div>
         ))}
-
       {step === 0 && <StartPage />}
       {step === 5 && <EndPage />}
       <div className="flex gap-x-10 flex-wrap">
@@ -54,20 +53,14 @@ function Quiz(props) {
               {step === 1 ? (
                 <input
                   onChange={handleCheckboxChange}
-                  className={`${styles.inputChildren} checked:bg-black peer hover:bg-black appearance-none w-full focus-visible:border-4 border-black border p-5 rounded-full`}
+                  className={`${styles.inputChildren} checked:bg-matasBlue-900 peer hover:bg-matasBlue-900 appearance-none w-full focus-visible:border-4 border-matasBlue-900 border p-5 rounded-full`}
                   type="checkbox"
                   name="svarmulighed"
                   id={item.id}
                   value={item.svarmulighed}
                 />
               ) : (
-                <input
-                  className={`${styles.inputChildren} checked:bg-black peer hover:bg-black appearance-none w-full focus-visible:border-4 border-black border p-5 rounded-full`}
-                  type="radio"
-                  name="svarmulighed"
-                  id={item.id}
-                  value={item.svarmulighed}
-                />
+                <input className={`${styles.inputChildren} checked:bg-matasBlue-900 peer hover:bg-matasBlue-900 appearance-none w-full focus-visible:border-4 border-matasBlue-900 border p-5 rounded-full`} type="radio" name="svarmulighed" id={item.id} value={item.svarmulighed} />
               )}
               <label className={`${styles.inputChildren} p-5 cursor-pointer peer-checked:text-white peer-hover:text-white`} htmlFor={item.id}>
                 {item.svarmulighed}
@@ -75,29 +68,33 @@ function Quiz(props) {
             </div>
           ))}
       </div>
-      {step > 0 && step !== 5 && (
-        <button
-          onClick={() => {
-            console.log(step);
-            setStep((prevStep) => prevStep - 1);
-          }}
-        >
-          Prev
-        </button>
-      )}
-      {step < 5 && (
-        <button
-          onClick={() => {
-            if (step === 1 && !checkboxesChecked) {
-              setStep((prevStep) => prevStep + 0);
-              return;
-            }
-            setStep((prevStep) => prevStep + 1);
-          }}
-        >
-          Next
-        </button>
-      )}
+      <div className="flex justify-center w-full gap-20">
+        {step > 0 && step !== 5 && (
+          <button
+            className="py-4 px-10 rounded-full hover:bg-transparent hover:ring-inset ring-2 ring-matasBlue-900 hover:text-matasBlue-900 hover:border-matasBlue-900 bg-matasBlue-900 text-matasWhite-900"
+            onClick={() => {
+              console.log(step);
+              setStep((prevStep) => prevStep - 1);
+            }}
+          >
+            Forrige
+          </button>
+        )}
+        {step < 5 && (
+          <button
+            className="py-4 px-10 rounded-full hover:bg-transparent hover:ring-inset ring-2 ring-matasBlue-900 hover:text-matasBlue-900 hover:border-matasBlue-900 bg-matasBlue-900 text-matasWhite-900"
+            onClick={() => {
+              if (step === 1 && !checkboxesChecked) {
+                setStep((prevStep) => prevStep + 0);
+                return;
+              }
+              setStep((prevStep) => prevStep + 1);
+            }}
+          >
+            Næste
+          </button>
+        )}
+      </div>
     </article>
   );
 }
