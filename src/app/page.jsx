@@ -4,7 +4,7 @@ import Card from "./components/Card";
 import EndPage from "./components/EndPage";
 
 // Udkommenterring skal fjernes, hvis database skal opdateres.
-//export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 
 export default async function page() {
   // GET svarmuligheder fra Supabase
