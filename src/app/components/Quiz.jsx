@@ -45,7 +45,26 @@ function Quiz(props) {
             <p>{item.options}</p>
           </div>
         ))}
-      {step === 0 && <StartPage />}
+      {step === 0 && (
+        <div className="grid grid-cols-2 bg-matasPink-700">
+          <Image src="/model.webp" width={600} height={600} alt="Model picture" />
+          <div className="w-10/12 gap-3 flex flex-col justify-center align-center text-center md:w-9/12 mx-auto md:gap-5">
+            <p className="text-matasBlue-900 text-xs sm:text-xl lg:text-xl">FIND DIN FAVORIT</p>
+            <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl text-matasBlue-900 font-serif font-semibold">Hvilken dagcreme passer til dig?</h1>
+            <button
+              onClick={() => {
+                setStep((prevStep) => prevStep + 1);
+              }}
+              className="p-2 sm:p-3 text-matasWhite-900 bg-matasBlue-900 rounded-md"
+            >
+              <p className="text-xs sm:text-xl lg:text-xl">TAG TESTEN</p>
+            </button>
+            <h4 className="text-matasBlue-900 text-xs sm:text-xl lg:text-xl">
+              <b>Optjen 5 point</b> hos club Matas
+            </h4>
+          </div>
+        </div>
+      )}
       {step === 5 && <EndPage />}
       <div className="flex gap-x-10 flex-wrap my-10">
         {props.data
@@ -62,7 +81,13 @@ function Quiz(props) {
                   value={item.svarmulighed}
                 />
               ) : (
-                <input className={`${styles.inputChildren} checked:bg-matasBlue-900 peer hover:bg-matasBlue-900 appearance-none w-full focus-visible:border-4 border-matasBlue-900 border p-5 rounded-full`} type="radio" name="svarmulighed" id={item.id} value={item.svarmulighed} />
+                <input
+                  className={`${styles.inputChildren} checked:bg-matasBlue-900 peer hover:bg-matasBlue-900 appearance-none w-full focus-visible:border-4 border-matasBlue-900 border p-5 rounded-full`}
+                  type="radio"
+                  name="svarmulighed"
+                  id={item.id}
+                  value={item.svarmulighed}
+                />
               )}
               <label className={`${styles.inputChildren} p-5 cursor-pointer peer-checked:text-white peer-hover:text-white`} htmlFor={item.id}>
                 {item.svarmulighed}
@@ -85,7 +110,7 @@ function Quiz(props) {
             Forrige
           </button>
         )}
-        {step < 5 && (
+        {step > 0 && step !== 5 && (
           <button
             className="flex  place-items-center  gap-2 py-2 px-7 rounded-full hover:bg-transparent hover:ring-inset ring-2 ring-matasBlue-900 hover:text-matasBlue-900 hover:border-matasBlue-900 bg-matasBlue-900 text-matasWhite-900"
             onClick={() => {
