@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import StartPage from "./StartPage";
 import EndPage from "./EndPage";
 import styles from "./Quiz.module.css";
 import Image from "next/image";
