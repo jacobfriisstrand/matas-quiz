@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import StartPage from "./StartPage";
 import EndPage from "./EndPage";
 import styles from "./Quiz.module.css";
+import Image from "next/image";
 
 function Quiz(props) {
   const [step, setStep] = useState(0);
@@ -36,10 +37,18 @@ function Quiz(props) {
     <article className="space-y-5">
       <h2>Quiz</h2>
       {props.data
-        .filter((item) => item.step === step)
+        .filter((item) => item.step === step && item.questions !== null)
         .map((item) => (
           <div key={item.id}>
-            <h3 className="font-serif font-semibold text-2xl">{item.questions}</h3>
+            <Image
+              src={`/${item.hero}`}
+              width={600}
+              height={600}
+              alt="Model picture"
+            />
+            <h3 className="font-serif font-semibold text-2xl">
+              {item.questions}
+            </h3>
             <p>{item.options}</p>
           </div>
         ))}
@@ -60,9 +69,18 @@ function Quiz(props) {
                   value={item.svarmulighed}
                 />
               ) : (
-                <input className={`${styles.inputChildren} checked:bg-matasBlue-900 peer hover:bg-matasBlue-900 appearance-none w-full focus-visible:border-4 border-matasBlue-900 border p-5 rounded-full`} type="radio" name="svarmulighed" id={item.id} value={item.svarmulighed} />
+                <input
+                  className={`${styles.inputChildren} checked:bg-matasBlue-900 peer hover:bg-matasBlue-900 appearance-none w-full focus-visible:border-4 border-matasBlue-900 border p-5 rounded-full`}
+                  type="radio"
+                  name="svarmulighed"
+                  id={item.id}
+                  value={item.svarmulighed}
+                />
               )}
-              <label className={`${styles.inputChildren} p-5 cursor-pointer peer-checked:text-white peer-hover:text-white`} htmlFor={item.id}>
+              <label
+                className={`${styles.inputChildren} p-5 cursor-pointer peer-checked:text-white peer-hover:text-white`}
+                htmlFor={item.id}
+              >
                 {item.svarmulighed}
               </label>
             </div>
