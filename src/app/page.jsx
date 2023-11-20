@@ -21,19 +21,19 @@ export default async function page() {
     <main>
       <h1>Matas</h1>
       <section className="lg:flex lg:flex-wrap -mx-2 grid grid-cols-2">
-        <div className="lg:w-1/3 px-2">
+        <div className="lg:w-1/3 px-2 flex items-end">
           <Card promotion="Spar 50%" src="dagcreme.avif" brand="matas" title="Dagcreme" price="599" />
         </div>
-        <div className=" lg:w-1/3 px-2">
+        <div className=" lg:w-1/3 px-2 flex items-end">
           <Card src="dagcreme.avif" brand="matas" title="Dagcreme" price="599" />
         </div>
-        <div className="lg:w-1/3 px-2 row-start-3 lg:row-start-1">
+        <div className="lg:w-1/3 px-2 row-start-3 lg:row-start-1 flex items-end">
           <Card promotion="200kr for club matas" src="dagcreme.avif" brand="matas" title="Dagcreme" price="599" />
         </div>
         <div className=" lg:col-span-1 col-span-2 md:w-full lg:w-2/3  px-2">
           <Quiz data={data} />
         </div>
-        <div className="lg:w-1/3 px-2">
+        <div className="lg:w-1/3 px-2 flex items-end">
           <Card src="dagcreme.avif" brand="matas" title="Dagcreme" price="599" />
         </div>
       </section>
