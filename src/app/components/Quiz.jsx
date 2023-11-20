@@ -34,7 +34,6 @@ function Quiz(props) {
 
   return (
     <article className="flex flex-col">
-      <h2>Quiz</h2>
       {props.data
         .filter((item) => item.step === step && item.questions !== null)
         .map((item) => (
