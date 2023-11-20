@@ -7,15 +7,19 @@ function EndPage() {
       <Image src="/model.webp" width={500} height={500} alt="Model picture" />
       <div className={`${styles.textContainer}`}>
         <div>
-          <h2 className="text-matasBlue-900 ">DAGCREME</h2>
+          <h2 className="text-matasBlue-900 text-xs sm:text-base lg:text-xl">
+            DAGCREME
+          </h2>
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-matasBlue-900 font-serif font-semibold">
             TIP
           </h1>
-          <p className="max-w-[300px] mt-2	">
+          <p className="max-w-[300px] mt-2 text-xs sm:text-base lg:text-xl">
             Hvis du gerne vil gøre noget ekstra for din hud, så brug en serum
             under din dagcreme i din hudplejerutine
           </p>
-          <button className={`${styles.button}`}>SE DIT RESULTAT</button>
+          <button className={`${styles.button}`}>
+            <p className="text-xs sm:text-base lg:text-xl">SE DIT RESULTAT</p>
+          </button>
         </div>
       </div>
     </div>
