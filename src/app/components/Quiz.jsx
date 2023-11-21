@@ -49,20 +49,22 @@ function Quiz(props) {
   // console.log(step);
 
   return (
-    <article className="flex flex-col h-full">
+    <article className="flex flex-col h-full bg-gray-500 rounded-md">
       {props.data
         .filter((item) => item.step === step && item.questions !== null)
         .map((item) => (
           <div key={item.id}>
             <Image className="aspect-video w-full max-h-52 object-center object-cover" src={`/${item.hero}`} width={600} height={600} alt="Model picture" />
-            <h3 className="font-serif font-semibold text-2xl mt-5">{item.questions}</h3>
-            <p>{item.options}</p>
+            <div className="px-4">
+              <h3 className="font-serif font-semibold text-2xl mt-5">{item.questions}</h3>
+              <p>{item.options}</p>
+            </div>
           </div>
         ))}
       {step === 0 && <StartPage setStep={setStep} />}
       {step === 5 && <AnalyzingPage setStep={setStep} />}
       {step === 6 && <EndPage setStep={setStep} />}
-      <div className="flex gap-x-10 flex-wrap">
+      <div className="flex gap-x-10 flex-wrap px-4">
         {props.data
           .filter((item) => item.step === step && item.svarmulighed !== null)
           .map((item) => (
@@ -70,7 +72,7 @@ function Quiz(props) {
               {step === 1 ? (
                 <input
                   onChange={handleCheckboxChange}
-                  className={`${styles.inputChildren} checked:bg-matasBlue-900 peer hover:bg-matasBlue-900 appearance-none w-full focus-visible:border-4 border-matasBlue-900 border p-5 rounded-full`}
+                  className={`${styles.inputChildren} checked:bg-matasBlue-900 peer hover:bg-matasBlue-900 appearance-none w-full focus-visible:border-4 border-matasBlue-900 border p-4 rounded-full`}
                   type="checkbox"
                   name="svarmulighed"
                   id={item.id}
@@ -79,20 +81,20 @@ function Quiz(props) {
               ) : (
                 <input
                   onChange={handleRadioChange}
-                  className={`${styles.inputChildren} checked:bg-matasBlue-900 peer hover:bg-matasBlue-900 appearance-none w-full focus-visible:border-4 border-matasBlue-900 border p-5 rounded-full`}
+                  className={`${styles.inputChildren} checked:bg-matasBlue-900 peer hover:bg-matasBlue-900 appearance-none w-full focus-visible:border-4 border-matasBlue-900 border p-4 rounded-full`}
                   type="radio"
                   name="svarmulighed"
                   id={item.id}
                   value={item.svarmulighed}
                 />
               )}
-              <label className={`${styles.inputChildren} p-5 text-xs md:text-base cursor-pointer peer-checked:text-white peer-hover:text-white`} htmlFor={item.id}>
+              <label className={`${styles.inputChildren} p-4 text-xs md:text-base cursor-pointer peer-checked:text-white peer-hover:text-white`} htmlFor={item.id}>
                 {item.svarmulighed}
               </label>
             </div>
           ))}
       </div>
-      <div className="flex justify-center w-full gap-20">
+      <div className="flex justify-center w-full gap-20 mt-auto pb-4">
         {step !== 0 && step !== 5 && step !== 6 && (
           <button
             className="flex  place-items-center  gap-2 py-2 px-7 rounded-full hover:bg-transparent hover:ring-inset ring-1 ring-matasBlue-900 hover:text-matasBlue-900 hover:border-matasBlue-900 bg-matasBlue-900 text-matasWhite-900"
