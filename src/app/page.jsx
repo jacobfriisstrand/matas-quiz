@@ -28,19 +28,16 @@ export default async function page() {
   return (
     <div>
       <NavBar />
-      <div className="flex flex-col md:flex-row justify-between">
-        <SideBar />
-        <main className="bg-matasEarth-500 row-start-2">
-          <section className={styles.grid}>
-            <div className="col-span-2 row-start-2">
-              <Quiz data={data} className={styles.quiz} />
-            </div>
-            {productData.map((product) => (
-              <Card key={product.id} src={product.image} brand={product.brand} title={product.name} price={product.price} />
-            ))}
-          </section>
-        </main>
-      </div>
+      <main className="bg-matasEarth-500 row-start-2">
+        <section className={styles.grid}>
+          <div className="col-span-2 row-start-2">
+            <Quiz data={data} className={styles.quiz} />
+          </div>
+          {productData.map((product) => (
+            <Card key={product.id} src={product.image} brand={product.brand} title={product.name} price={product.price} />
+          ))}
+        </section>
+      </main>
     </div>
   );
 }
