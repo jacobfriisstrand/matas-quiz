@@ -3,6 +3,7 @@ import React from "react";
 import Card from "./components/Card";
 import EndPage from "./components/EndPage";
 import { promises as fs } from "fs";
+import styles from ".//Page.module.css";
 
 // Udkommenterring skal fjernes, hvis database skal opdateres.
 export const dynamic = "force-dynamic";
@@ -24,14 +25,12 @@ export default async function page() {
 
   return (
     <main className="bg-matasEarth-500">
-      <section className="grid md:grid-cols-3 lg:grid-cols-4 gap-10">
+      <section className={styles.grid}>
         <div className="col-span-2 row-start-2">
-          <Quiz data={data} />
+          <Quiz data={data} className={styles.quiz} />
         </div>
         {productData.map((product) => (
-          <div key={product.id}>
-            <Card src={product.image} brand={product.brand} title={product.name} price={product.price} />
-          </div>
+          <Card key={product.id} src={product.image} brand={product.brand} title={product.name} price={product.price} />
         ))}
       </section>
     </main>
