@@ -4,6 +4,8 @@ import Card from "./components/Card";
 import EndPage from "./components/EndPage";
 import { promises as fs } from "fs";
 import styles from ".//Page.module.css";
+import SideBar from "./components/SideBar";
+import NavBar from "./components/NavBar";
 
 // Udkommenterring skal fjernes, hvis database skal opdateres.
 export const dynamic = "force-dynamic";
@@ -24,15 +26,21 @@ export default async function page() {
   console.log(productData);
 
   return (
-    <main className="bg-matasEarth-500">
-      <section className={styles.grid}>
-        <div className="col-span-2 row-start-2">
-          <Quiz data={data} className={styles.quiz} />
-        </div>
-        {productData.map((product) => (
-          <Card key={product.id} src={product.image} brand={product.brand} title={product.name} price={product.price} />
-        ))}
-      </section>
-    </main>
+    <div>
+      <NavBar />
+      <div className="flex flex-col md:flex-row justify-between">
+        <SideBar />
+        <main className="bg-matasEarth-500 row-start-2">
+          <section className={styles.grid}>
+            <div className="col-span-2 row-start-2">
+              <Quiz data={data} className={styles.quiz} />
+            </div>
+            {productData.map((product) => (
+              <Card key={product.id} src={product.image} brand={product.brand} title={product.name} price={product.price} />
+            ))}
+          </section>
+        </main>
+      </div>
+    </div>
   );
 }
