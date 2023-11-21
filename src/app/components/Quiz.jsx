@@ -4,6 +4,7 @@ import StartPage from "./StartPage";
 import EndPage from "./EndPage";
 import styles from "./Quiz.module.css";
 import Image from "next/image";
+import AnalyzingPage from "./AnalyzingPage";
 
 function Quiz(props) {
   const [step, setStep] = useState(0);
@@ -40,13 +41,21 @@ function Quiz(props) {
         .filter((item) => item.step === step && item.questions !== null)
         .map((item) => (
           <div key={item.id}>
-            <Image className="aspect-video w-full max-h-52 object-center object-cover" src={`/${item.hero}`} width={600} height={600} alt="Model picture" />
-            <h3 className="font-serif font-semibold text-2xl mt-5">{item.questions}</h3>
+            <Image
+              className="aspect-video w-full max-h-52 object-center object-cover"
+              src={`/${item.hero}`}
+              width={600}
+              height={600}
+              alt="Model picture"
+            />
+            <h3 className="font-serif font-semibold text-2xl mt-5">
+              {item.questions}
+            </h3>
             <p>{item.options}</p>
           </div>
         ))}
       {step === 0 && <StartPage />}
-      {step === 5 && <EndPage />}
+      {step === 5 && <AnalyzingPage setStep={setStep} />}
       <div className="flex gap-x-10 flex-wrap my-10">
         {props.data
           .filter((item) => item.step === step && item.svarmulighed !== null)
@@ -62,9 +71,18 @@ function Quiz(props) {
                   value={item.svarmulighed}
                 />
               ) : (
-                <input className={`${styles.inputChildren} checked:bg-matasBlue-900 peer hover:bg-matasBlue-900 appearance-none w-full focus-visible:border-4 border-matasBlue-900 border p-5 rounded-full`} type="radio" name="svarmulighed" id={item.id} value={item.svarmulighed} />
+                <input
+                  className={`${styles.inputChildren} checked:bg-matasBlue-900 peer hover:bg-matasBlue-900 appearance-none w-full focus-visible:border-4 border-matasBlue-900 border p-5 rounded-full`}
+                  type="radio"
+                  name="svarmulighed"
+                  id={item.id}
+                  value={item.svarmulighed}
+                />
               )}
-              <label className={`${styles.inputChildren} p-5 cursor-pointer peer-checked:text-white peer-hover:text-white`} htmlFor={item.id}>
+              <label
+                className={`${styles.inputChildren} p-5 cursor-pointer peer-checked:text-white peer-hover:text-white`}
+                htmlFor={item.id}
+              >
                 {item.svarmulighed}
               </label>
             </div>
@@ -79,7 +97,14 @@ function Quiz(props) {
               setStep((prevStep) => prevStep - 1);
             }}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-caret-left-fill"
+              viewBox="0 0 16 16"
+            >
               <path d="M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
             </svg>{" "}
             Forrige
@@ -97,7 +122,14 @@ function Quiz(props) {
             }}
           >
             Næste{" "}
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-caret-right-fill"
+              viewBox="0 0 16 16"
+            >
               <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
             </svg>
           </button>
