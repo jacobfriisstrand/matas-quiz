@@ -11,7 +11,7 @@ export default function Home({ setStep }) {
       renderer: "svg",
       loop: false,
       autoplay: true,
-      duration: 6,
+      duration: 5,
       path: "/animation/data.json",
     });
 
@@ -20,7 +20,7 @@ export default function Home({ setStep }) {
   useEffect(() => {
     setTimeout(() => {
       setStep(6);
-    }, 6000);
+    }, 5000);
   }, []);
 
   return (
