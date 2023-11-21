@@ -3,7 +3,7 @@ import Animation from "./Animation"
 
 function AnalyzingPage({ setStep }) {
   return (
-    <div className="bg-matasBrown-200 rounded-lg m-3 grid place-items-center ">
+    <div className="bg-matasBrown-200 rounded-lg grid place-items-center ">
       <Animation setStep={setStep} />
       <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-matasPrimaryText-900 font-serif font-semibold">
         Beregner dine svar

@@ -1,10 +1,10 @@
 import Image from "next/image";
-import styles from "@/app/components/endpage.module.css"
+import styles from "@/app/components/endpage.module.css";
 
 function EndPage() {
   return (
-    <div className="grid grid-cols-2 bg-matasPink-700 rounded-lg m-3">
-      <Image src="/model.webp" width={500} height={500} alt="Model picture" />
+    <div className="grid grid-cols-2 bg-matasPink-700 rounded-lg overflow-hidden gap-4">
+      <Image src="/model.webp" width={500} height={800} alt="Model picture" />
       <div className={`${styles.textContainer}`}>
         <div>
           <h2 className="text-matasBlue-900 ">DAGCREME</h2>

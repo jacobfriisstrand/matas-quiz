@@ -70,7 +70,7 @@ function Quiz(props) {
       {step === 0 && <StartPage setStep={setStep} />}
       {step === 5 && <AnalyzingPage setStep={setStep} />}
       {step === 6 && <EndPage setStep={setStep} />}
-      <div className="flex gap-x-10 flex-wrap my-10">
+      <div className="flex gap-x-10 flex-wrap">
         {props.data
           .filter((item) => item.step === step && item.svarmulighed !== null)
           .map((item) => (
