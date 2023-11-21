@@ -9,9 +9,8 @@ export default function Home({ setStep }) {
     const ani = lottie.loadAnimation({
       container: animationContainer.current,
       renderer: "svg",
-      loop: false,
+      loop: true,
       autoplay: true,
-      duration: 6,
       path: "/animation/data.json",
     });
 
@@ -20,7 +19,7 @@ export default function Home({ setStep }) {
   useEffect(() => {
     setTimeout(() => {
       setStep(6);
-    }, 6000);
+    }, 4500);
   }, []);
 
   return (
