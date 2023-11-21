@@ -7,6 +7,7 @@ import Image from "next/image";
 function Quiz(props) {
   const [step, setStep] = useState(0);
   const [checkboxesChecked, setCheckboxesChecked] = useState(false);
+  const [radioChecked, setRadioChecked] = useState(false);
 
   const ref = useRef([]);
 
@@ -21,6 +22,19 @@ function Quiz(props) {
     }
 
     setCheckboxesChecked(ref.current.length >= 2);
+  };
+
+  const handleRadioChange = (e) => {
+    const checkboxId = e.target.id;
+    const isChecked = e.target.checked;
+
+    if (isChecked) {
+      ref.current.push(checkboxId);
+    } else {
+      ref.current = ref.current.filter((id) => id !== checkboxId);
+    }
+
+    setRadioChecked(ref.current.length === 1);
   };
 
   useEffect(() => {
@@ -80,6 +94,7 @@ function Quiz(props) {
                 />
               ) : (
                 <input
+                  onChange={handleRadioChange}
                   className={`${styles.inputChildren} checked:bg-matasBlue-900 peer hover:bg-matasBlue-900 appearance-none w-full focus-visible:border-4 border-matasBlue-900 border p-5 rounded-full`}
                   type="radio"
                   name="svarmulighed"
@@ -112,11 +127,15 @@ function Quiz(props) {
           <button
             className="flex  place-items-center  gap-2 py-2 px-7 rounded-full hover:bg-transparent hover:ring-inset ring-2 ring-matasBlue-900 hover:text-matasBlue-900 hover:border-matasBlue-900 bg-matasBlue-900 text-matasWhite-900"
             onClick={() => {
-              if (step === 1 && !checkboxesChecked) {
+              if (checkboxesChecked || radioChecked) {
+                setStep((prevStep) => prevStep + 1);
+              } else {
                 setStep((prevStep) => prevStep + 0);
                 return;
               }
-              setStep((prevStep) => prevStep + 1);
+              ref.current.splice(ref);
+              setRadioChecked(false);
+              setCheckboxesChecked(false);
             }}
           >
             Næste{" "}
