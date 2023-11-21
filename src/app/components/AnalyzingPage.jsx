@@ -1,5 +1,5 @@
 import React from "react";
-import Animation from "./Animaton";
+import Animation from "./Animation"
 
 function AnalyzingPage({ setStep }) {
   return (

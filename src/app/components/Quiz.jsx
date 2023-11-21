@@ -4,6 +4,7 @@ import EndPage from "./EndPage";
 import StartPage from "./StartPage";
 import styles from "./Quiz.module.css";
 import Image from "next/image";
+import AnalyzingPage from "./AnalyzingPage";
 
 function Quiz(props) {
   const [step, setStep] = useState(0);
@@ -59,7 +60,7 @@ function Quiz(props) {
           </div>
         ))}
       {step === 0 && <StartPage setStep={setStep}/>}
-      {step === 5 && <EndPage />}
+      {step === 5 && <AnalyzingPage setStep={setStep} />}
       <div className="flex gap-x-10 flex-wrap my-10">
         {props.data
           .filter((item) => item.step === step && item.svarmulighed !== null)
