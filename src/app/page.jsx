@@ -38,7 +38,6 @@ export default async function page() {
             <Card key={product.id} src={product.image} brand={product.brand} title={product.name} price={product.price} />
           ))}
         </section>
-        <AnalyzingPage />
       </main>
     </div>
   );
