@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function StartPage({ setStep }) {
   return (
-    <div className="grid grid-cols-2 bg-matasPink-700 rounded-md overflow-hidden min-h-400 ">
+    <div className="grid grid-cols-2 bg-matasPink-700 rounded-md overflow-hidden min-h-full ">
       <Image src="/model.webp" width={500} height={100} alt="Model picture" className="h-full object-cover" />
       <div className="gap-3 px-4 flex flex-col justify-center align-center text-center mx-auto md:gap-5">
         <p className="text-matasBlue-900 text-xs sm:text-xl lg:text-xl">FIND DIN FAVORIT</p>
