@@ -6,6 +6,7 @@ import { promises as fs } from "fs";
 import styles from ".//Page.module.css";
 import SideBar from "./components/SideBar";
 import NavBar from "./components/NavBar";
+import AnalyzingPage from "./components/AnalyzingPage";
 
 // Udkommenterring skal fjernes, hvis database skal opdateres.
 export const dynamic = "force-dynamic";
@@ -37,6 +38,7 @@ export default async function page() {
             <Card key={product.id} src={product.image} brand={product.brand} title={product.name} price={product.price} />
           ))}
         </section>
+        <AnalyzingPage />
       </main>
     </div>
   );
