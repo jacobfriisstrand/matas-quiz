@@ -3,10 +3,10 @@ import React from "react";
 import Card from "./components/Card";
 import EndPage from "./components/EndPage";
 import { promises as fs } from "fs";
-import styles from ".//Page.module.css";
 import SideBar from "./components/SideBar";
 import NavBar from "./components/NavBar";
 import AnalyzingPage from "./components/AnalyzingPage";
+import Wrapper from "./components/Wrapper";
 
 // Udkommenterring skal fjernes, hvis database skal opdateres.
 export const dynamic = "force-dynamic";
@@ -30,14 +30,7 @@ export default async function page() {
     <div>
       <NavBar />
       <main className="bg-matasEarth-500 row-start-2">
-        <section className={styles.grid}>
-          <div className="col-span-2 row-start-2">
-            <Quiz data={data} className={styles.quiz} />
-          </div>
-          {productData.map((product) => (
-            <Card key={product.id} src={product.image} brand={product.brand} title={product.name} price={product.price} />
-          ))}
-        </section>
+        <Wrapper data={data} productData={productData} />
       </main>
     </div>
   );
