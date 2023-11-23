@@ -21,7 +21,8 @@ export default async function page() {
   });
   const data = await res.json();
 
-  const file = await fs.readFile(process.cwd() + "/produkt.json", "utf8");
+  const file = await fs.readFile(process.cwd() + "/app/produkt.json", "utf8");
+
   const productData = JSON.parse(file);
 
   console.log(productData);
