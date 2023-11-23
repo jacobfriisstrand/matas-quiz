@@ -1,6 +1,7 @@
 "use client";
 import lottie from "lottie-web";
 import { createRef, useEffect } from "react";
+import styles from "./Animation.module.css";
 
 export default function Home({ setStep }) {
   let animationContainer = createRef();
@@ -24,7 +25,7 @@ export default function Home({ setStep }) {
 
   return (
     <main>
-      <div ref={animationContainer} />
+      <div className={styles.animationContainer} ref={animationContainer} />
     </main>
   );
 }
