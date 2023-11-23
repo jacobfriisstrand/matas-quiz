@@ -7,7 +7,7 @@ import SideBar from "./components/SideBar";
 import NavBar from "./components/NavBar";
 import AnalyzingPage from "./components/AnalyzingPage";
 import Wrapper from "./components/Wrapper";
-
+import productData from "@/app/produkt.json";
 // Udkommenterring skal fjernes, hvis database skal opdateres.
 export const dynamic = "force-dynamic";
 
@@ -21,9 +21,11 @@ export default async function page() {
   });
   const data = await res.json();
 
-  const file = await fs.readFile(process.cwd() + "/src/app/produkt.json", "utf8");
+  //const productData = await fetch("/produkt.json").then((r) => r.json());
+
+  /* const file = await fs.readFile(process.cwd() + "/src/app/produkt.json", "utf8");
   console.log(process.cwd());
-  const productData = JSON.parse(file);
+  const productData = JSON.parse(file); */
 
   console.log(productData);
 
