@@ -11,44 +11,38 @@ function Quiz(props) {
   const [checkboxesChecked, setCheckboxesChecked] = useState(false);
   const [radioChecked, setRadioChecked] = useState(false);
 
-  const ref = useRef([]);
+  const ref = useRef({
+    purpose: [],
+    important: "",
+    age: "",
+    skinType: "",
+  });
 
   const handleCheckboxChange = (e) => {
-    const checkboxId = e.target.id;
+    const checkboxValue = e.target.value;
     const isChecked = e.target.checked;
 
     if (isChecked) {
-      ref.current.push(checkboxId);
+      ref.current.purpose.push(checkboxValue);
     } else {
-      ref.current = ref.current.filter((id) => id !== checkboxId);
+      ref.current.purpose = ref.current.purpose.filter((value) => value !== checkboxValue);
     }
 
-    setCheckboxesChecked(ref.current.length >= 2);
+    setCheckboxesChecked(ref.current.purpose.length >= 2);
   };
 
   const handleRadioChange = (e) => {
-    const checkboxId = e.target.id;
-    const isChecked = e.target.checked;
+    const mapping = {
+      2: "important",
+      3: "age",
+      4: "skinType",
+    };
 
-    if (isChecked) {
-      ref.current.splice(ref);
+    ref.current[mapping[step]] = e.target.value;
 
-      ref.current.push(checkboxId);
-    } else {
-      ref.current = ref.current.filter((id) => id !== checkboxId);
-    }
-
-    setRadioChecked(ref.current.length === 1);
+    console.log(ref.current);
+    setRadioChecked(true);
   };
-
-  useEffect(() => {
-    if (step === 1) {
-      // Reset checkbox state on step change
-      setCheckboxesChecked(false);
-      ref.current.splice(ref);
-    }
-  }, [step]);
-  // console.log(step);
 
   return (
     <article className="flex flex-col h-full bg-gray-500 rounded-md">
@@ -85,7 +79,7 @@ function Quiz(props) {
                   onChange={handleRadioChange}
                   className={`${styles.inputChildren} checked:bg-matasBlue-900 peer hover:bg-matasBlue-900 appearance-none w-full focus-visible:border-4 border-matasBlue-900 border p-4 rounded-full`}
                   type="radio"
-                  name="svarmulighed"
+                  name={"svarmulighed_" + step}
                   id={item.id}
                   value={item.svarmulighed}
                 />
@@ -121,7 +115,6 @@ function Quiz(props) {
                 setStep((prevStep) => prevStep + 0);
                 return;
               }
-              ref.current.splice(ref);
               setRadioChecked(false);
               setCheckboxesChecked(false);
             }}
