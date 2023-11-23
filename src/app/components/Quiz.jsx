@@ -65,7 +65,7 @@ function Quiz(props) {
               <h3 className="font-serif font-semibold text-2xl mt-5 text-2xl sm:text-3xl md:text-4xl lg:text-5xl ">
                 {item.questions}
               </h3>
-              <p className="text-xs sm:text-xl lg:text-xl mb-4">
+              <p className="text-xs sm:text-base lg:text-base mb-4">
                 {item.options}
               </p>
             </div>
