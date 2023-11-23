@@ -29,6 +29,7 @@ const ProgressBar = ({ step }) => (
           size="small"
           labelPlacement="vertical"
           items={items}
+          responsive={false}
         />
       </div>
     </ConfigProvider>
