@@ -18,14 +18,15 @@ function Wrapper({ productData, data }) {
     <section>
       {step === 7 ? (
         <>
-          <section>
-            <p>{ref.current.purpose}</p>
+          <section className="flex justify-between px-4 py-12 bg-matasPink-700">
+            <p className="flex flex-col">{ref.current.purpose}</p>
             <p>{ref.current.important}</p>
             <p>{ref.current.age}</p>
             <p>{ref.current.skinType}</p>
+            <button>Gem dine svar</button>
           </section>
-          <section>
-            <h2>Dine Resultater: </h2>
+          <h2>Dine Resultater: </h2>
+          <section className={styles.grid}>
             {productData.slice(0, 3).map((product) => (
               <Card key={product.id} src={product.image} brand={product.brand} title={product.name} price={product.price} />
             ))}
