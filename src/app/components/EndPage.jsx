@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "@/app/components/endpage.module.css";
+import styles from "@/app/components/Endpage.module.css";
 
 import { DM_Serif_Text } from "next/font/google";
 
