@@ -12,7 +12,7 @@ const dmSerif = DM_Serif_Text({
 });
 
 function Wrapper({ productData, data }) {
-  const [step, setStep] = useState(7);
+  const [step, setStep] = useState(0);
 
   useEffect(() => {
     if (step === 7) {
