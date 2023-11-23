@@ -1,16 +1,16 @@
 import { Steps } from "antd";
 const items = [
   {
-    title: "1",
+    title: "",
   },
   {
-    title: "2",
+    title: "",
   },
   {
-    title: "3",
+    title: "",
   },
   {
-    title: "4",
+    title: "",
   },
 ];
 const ProgressBar = ({ step }) => (
