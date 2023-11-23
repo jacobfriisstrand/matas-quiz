@@ -58,7 +58,7 @@ function Quiz(props) {
           <div key={item.id}>
             <Image className="aspect-video w-full max-h-20 object-center object-cover" src={`/${item.hero}`} width={600} height={300} alt="Model picture" />
             <div className="px-4">
-              <h3 className="font-serif font-semibold text-2xl mt-5 text-2xl sm:text-2xl md:text-3xl lg:text-3xl ">{item.questions}</h3>
+              <h3 className="font-serif font-semibold mt-5 text-2xl sm:text-2xl md:text-3xl lg:text-3xl ">{item.questions}</h3>
               <p className="text-xs sm:text-base lg:text-base mb-4">{item.options}</p>
             </div>
           </div>
