@@ -7,6 +7,10 @@ import styles from "./Quiz.module.css";
 import Image from "next/image";
 import AnalyzingPage from "./AnalyzingPage";
 
+import { DM_Serif_Text } from "next/font/google";
+
+const dmSerif = DM_Serif_Text({ subsets: ["latin"], weight: "400", display: "swap" });
+
 function Quiz({ setStep, step, ...props }) {
   // const [step, setStep] = useState(0);
   const [checkboxesChecked, setCheckboxesChecked] = useState(false);
@@ -47,7 +51,7 @@ function Quiz({ setStep, step, ...props }) {
             <Image className="aspect-video w-full max-h-20 object-center object-cover" src={`/${item.hero}`} width={600} height={300} alt="Model picture" />
             <ProgressBar step={step} />
             <div className="px-4">
-              <h3 className="font-serif font-semibold mt-5 text-2xl sm:text-2xl md:text-3xl lg:text-3xl ">{item.questions}</h3>
+              <h3 className={`${dmSerif.className} font-semibold mt-5 text-2xl sm:text-2xl md:text-3xl lg:text-3xl`}>{item.questions}</h3>
               <p className="text-xs sm:text-base lg:text-base mb-4">{item.options}</p>
             </div>
           </div>

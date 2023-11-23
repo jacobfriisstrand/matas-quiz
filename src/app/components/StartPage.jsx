@@ -1,5 +1,8 @@
 import React from "react";
 import Image from "next/image";
+import { DM_Serif_Text } from "next/font/google";
+
+const dmSerif = DM_Serif_Text({ subsets: ["latin"], weight: "400", display: "swap" });
 
 export default function StartPage({ setStep }) {
   return (
@@ -7,7 +10,8 @@ export default function StartPage({ setStep }) {
       <Image src="/model.webp" width={500} height={100} alt="Model picture" className="h-full object-cover" />
       <div className="gap-3 px-4 flex flex-col justify-center align-center text-center mx-auto md:gap-5">
         <p className="text-matasBlue-900 text-xs sm:text-xl lg:text-base">FIND DIN FAVORIT</p>
-        <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl text-matasBlue-900 font-serif font-semibold">Hvilken dagcreme passer til dig?</h1>
+        <h1 className={`${dmSerif.className} text-2xl sm:text-2xl md:text-3xl lg:text-4xl text-matasBlue-900 font-semibold`}>Hvilken dagcreme passer til dig?</h1>
+
         <button
           onClick={() => {
             setStep((prevStep) => prevStep + 1);
