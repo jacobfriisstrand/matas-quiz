@@ -12,26 +12,17 @@ function Quiz({ setStep, step, ...props }) {
   const [checkboxesChecked, setCheckboxesChecked] = useState(false);
   const [radioChecked, setRadioChecked] = useState(false);
 
-  const ref = useRef({
-    purpose: [],
-    important: "",
-    age: "",
-    skinType: "",
-  });
-
   const handleCheckboxChange = (e) => {
     const checkboxValue = e.target.value;
     const isChecked = e.target.checked;
 
     if (isChecked) {
-      ref.current.purpose.push(checkboxValue);
+      props.myRef.current.purpose.push(checkboxValue);
     } else {
-      ref.current.purpose = ref.current.purpose.filter(
-        (value) => value !== checkboxValue
-      );
+      props.myRef.current.purpose = props.myRef.current.purpose.filter((value) => value !== checkboxValue);
     }
 
-    setCheckboxesChecked(ref.current.purpose.length >= 2);
+    setCheckboxesChecked(props.myRef.current.purpose.length >= 2);
   };
 
   const handleRadioChange = (e) => {
@@ -41,9 +32,9 @@ function Quiz({ setStep, step, ...props }) {
       4: "skinType",
     };
 
-    ref.current[mapping[step]] = e.target.value;
+    props.myRef.current[mapping[step]] = e.target.value;
 
-    console.log(ref.current);
+    console.log(props.myRef.current);
     setRadioChecked(true);
   };
 
@@ -53,21 +44,11 @@ function Quiz({ setStep, step, ...props }) {
         .filter((item) => item.step === step && item.questions !== null)
         .map((item) => (
           <div key={item.id}>
-            <Image
-              className="aspect-video w-full max-h-20 object-center object-cover"
-              src={`/${item.hero}`}
-              width={600}
-              height={300}
-              alt="Model picture"
-            />
+            <Image className="aspect-video w-full max-h-20 object-center object-cover" src={`/${item.hero}`} width={600} height={300} alt="Model picture" />
             <ProgressBar step={step} />
             <div className="px-4">
-              <h3 className="font-serif font-semibold mt-5 text-2xl sm:text-2xl md:text-3xl lg:text-3xl ">
-                {item.questions}
-              </h3>
-              <p className="text-xs sm:text-base lg:text-base mb-4">
-                {item.options}
-              </p>
+              <h3 className="font-serif font-semibold mt-5 text-2xl sm:text-2xl md:text-3xl lg:text-3xl ">{item.questions}</h3>
+              <p className="text-xs sm:text-base lg:text-base mb-4">{item.options}</p>
             </div>
           </div>
         ))}
@@ -98,10 +79,7 @@ function Quiz({ setStep, step, ...props }) {
                   value={item.svarmulighed}
                 />
               )}
-              <label
-                className={`${styles.inputChildren} p-4 text-xs md:text-base cursor-pointer peer-checked:text-white peer-hover:text-white`}
-                htmlFor={item.id}
-              >
+              <label className={`${styles.inputChildren} p-4 text-xs md:text-base cursor-pointer peer-checked:text-white peer-hover:text-white`} htmlFor={item.id}>
                 {item.svarmulighed}
               </label>
             </div>
@@ -116,14 +94,7 @@ function Quiz({ setStep, step, ...props }) {
               setStep((prevStep) => prevStep - 1);
             }}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-caret-left-fill"
-              viewBox="0 0 16 16"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
               <path d="M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
             </svg>{" "}
             Forrige
@@ -144,14 +115,7 @@ function Quiz({ setStep, step, ...props }) {
             }}
           >
             Næste{" "}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-caret-right-fill"
-              viewBox="0 0 16 16"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
               <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
             </svg>
           </button>

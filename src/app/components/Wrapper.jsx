@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Quiz from "./Quiz";
 import Card from "./Card";
 import styles from "./Wrapper.module.css";
@@ -7,19 +7,39 @@ import styles from "./Wrapper.module.css";
 function Wrapper({ productData, data }) {
   const [step, setStep] = useState(0);
 
+  const ref = useRef({
+    purpose: [],
+    important: "",
+    age: "",
+    skinType: "",
+  });
+
   return (
-    <section className={styles.grid}>
+    <section>
       {step === 7 ? (
-        <p>Hej</p>
-      ) : (
         <>
+          <section>
+            <p>{ref.current.purpose}</p>
+            <p>{ref.current.important}</p>
+            <p>{ref.current.age}</p>
+            <p>{ref.current.skinType}</p>
+          </section>
+          <section>
+            <h2>Dine Resultater: </h2>
+            {productData.slice(0, 3).map((product) => (
+              <Card key={product.id} src={product.image} brand={product.brand} title={product.name} price={product.price} />
+            ))}
+          </section>
+        </>
+      ) : (
+        <section className={styles.grid}>
           <div className="col-span-2 row-start-2">
-            <Quiz step={step} setStep={setStep} data={data} className={styles.quiz} />
+            <Quiz myRef={ref} step={step} setStep={setStep} data={data} className={styles.quiz} />
           </div>
           {productData.map((product) => (
             <Card key={product.id} src={product.image} brand={product.brand} title={product.name} price={product.price} />
           ))}
-        </>
+        </section>
       )}
     </section>
   );
