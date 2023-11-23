@@ -24,13 +24,7 @@ const ProgressBar = ({ step }) => (
       }}
     >
       <div className="my-5 text-white">
-        <Steps
-          current={step - 1}
-          size="small"
-          labelPlacement="vertical"
-          items={items}
-          responsive={false}
-        />
+        <Steps current={step - 1} size="small" labelPlacement="vertical" responsive={false} items={items} />
       </div>
     </ConfigProvider>
   </>

@@ -54,7 +54,7 @@ function Quiz({ setStep, step, ...props }) {
 
   return (
     <article
-      className="flex flex-col h-full rounded-md overflow-hidden"
+      className="flex flex-col h-full rounded-md overflow-hidden min-h-[536px]"
       style={{ backgroundColor: thisBG }}
     >
       {props.data
