@@ -3,7 +3,7 @@ import styles from "@/app/components/endpage.module.css";
 
 function EndPage() {
   return (
-    <div className="grid grid-cols-2 bg-matasPink-700 rounded-md overflow-hidden gap-4 min-h-full ">
+    <div className="grid grid-cols-2 bg-matasPink-700 rounded-md overflow-hidden min-h-full ">
       <Image src="/model.webp" width={500} height={100} alt="Model picture" className="h-full object-cover" />
       <div className={`${styles.textContainer}`}>
         <div>
