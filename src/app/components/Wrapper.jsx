@@ -3,9 +3,16 @@ import { useState, useRef, useEffect } from "react";
 import Quiz from "./Quiz";
 import Card from "./Card";
 import styles from "./Wrapper.module.css";
+import { DM_Serif_Text } from "next/font/google";
+
+const dmSerif = DM_Serif_Text({
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
 
 function Wrapper({ productData, data }) {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(7);
 
   useEffect(() => {
     if (step === 7) {
@@ -26,7 +33,7 @@ function Wrapper({ productData, data }) {
           <section className=" bg-matasBeige-200 rounded-md mx-2">
             <div className="flex justify-between px-4 py-10">
               <div>
-                <h3 className="font-serif font-semibold text-xl md:text-2xl text-matasBlue-900">
+                <h3 className={`${dmSerif.className} font-semibold text-xl md:text-2xl text-matasBlue-900`}>
                   Formål
                 </h3>{" "}
                 <div className="flex flex-wrap gap-2">
@@ -41,7 +48,7 @@ function Wrapper({ productData, data }) {
                 </div>
               </div>
               <div>
-                <h3 className="font-serif font-semibold text-xl md:text-2xl text-matasBlue-900">
+                <h3 className={`${dmSerif.className} font-semibold text-xl md:text-2xl text-matasBlue-900`}>
                   Præferencer
                 </h3>
                 <p className="bg-matasBlue-900 text-matasWhite-900 p-2 rounded-full h-fit text-xs max-w-max mb-1">
@@ -49,7 +56,7 @@ function Wrapper({ productData, data }) {
                 </p>
               </div>
               <div>
-                <h3 className="font-serif font-semibold text-xl md:text-2xl text-matasBlue-900">
+                <h3 className={`${dmSerif.className} font-semibold text-xl md:text-2xl text-matasBlue-900`}>
                   Alder
                 </h3>
                 <p className="bg-matasBlue-900 text-matasWhite-900 p-2 rounded-full h-fit text-xs max-w-max mb-1">
@@ -57,7 +64,7 @@ function Wrapper({ productData, data }) {
                 </p>
               </div>
               <div>
-                <h3 className="font-serif font-semibold text-xl md:text-2xl text-matasBlue-900">
+                <h3 className={`${dmSerif.className} font-semibold text-xl md:text-2xl text-matasBlue-900`}>
                   Hudtype
                 </h3>
                 <p className="bg-matasBlue-900 text-matasWhite-900 p-2 rounded-full h-fit text-xs max-w-max mb-1">
@@ -77,7 +84,7 @@ function Wrapper({ productData, data }) {
             </div>
           </section>
 
-          <h2 className="font-serif font-semibold mt-5 text-2xl sm:text-2xl md:text-3xl lg:text-3xl text-matasBlue-900">
+          <h2 className={`${dmSerif.className} font-serif font-semibold mt-5 text-2xl sm:text-2xl md:text-3xl lg:text-3xl text-matasBlue-900`}>
             Dine Resultater{" "}
           </h2>
           <section className={styles.grid}>
