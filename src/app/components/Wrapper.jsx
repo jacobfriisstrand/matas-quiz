@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Quiz from "./Quiz";
 import Card from "./Card";
 import styles from "./Wrapper.module.css";
@@ -7,6 +7,11 @@ import styles from "./Wrapper.module.css";
 function Wrapper({ productData, data }) {
   const [step, setStep] = useState(0);
 
+  useEffect(() => {
+    if (step === 7) {
+      window.scrollTo(0, 0);
+    }
+  }, [step]);
   const ref = useRef({
     purpose: [],
     important: "",
@@ -18,30 +23,63 @@ function Wrapper({ productData, data }) {
     <section>
       {step === 7 ? (
         <>
-          <section className="flex justify-between px-4 py-12 bg-matasPink-700">
-            <div className="flex flex-col ">
-              <h3 className="">Formål</h3>
-              {ref.current.purpose.map((object, index) => (
-                <p key={index}>{object}</p>
-              ))}
+          <section className=" bg-matasBeige-200 rounded-md mx-2">
+            <div className="flex justify-between px-4 py-10">
+              <div>
+                <h3 className="font-serif font-semibold text-xl md:text-2xl text-matasBlue-900">
+                  Formål
+                </h3>{" "}
+                <div className="flex flex-wrap gap-2">
+                  {ref.current.purpose.map((object, index) => (
+                    <p
+                      className="bg-matasBlue-900 text-matasWhite-900 p-2 rounded-full h-fit text-xs max-w-max mb-1"
+                      key={index}
+                    >
+                      {object}
+                    </p>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <h3 className="font-serif font-semibold text-xl md:text-2xl text-matasBlue-900">
+                  Præferencer
+                </h3>
+                <p className="bg-matasBlue-900 text-matasWhite-900 p-2 rounded-full h-fit text-xs max-w-max mb-1">
+                  {ref.current.important}
+                </p>
+              </div>
+              <div>
+                <h3 className="font-serif font-semibold text-xl md:text-2xl text-matasBlue-900">
+                  Alder
+                </h3>
+                <p className="bg-matasBlue-900 text-matasWhite-900 p-2 rounded-full h-fit text-xs max-w-max mb-1">
+                  {ref.current.age}
+                </p>
+              </div>
+              <div>
+                <h3 className="font-serif font-semibold text-xl md:text-2xl text-matasBlue-900">
+                  Hudtype
+                </h3>
+                <p className="bg-matasBlue-900 text-matasWhite-900 p-2 rounded-full h-fit text-xs max-w-max mb-1">
+                  {ref.current.skinType}
+                </p>
+              </div>
+            </div>{" "}
+            <div className="flex flex-col items-end">
+              <h4 className="text-matasBlue-900 text-xs sm:text-base lg:text-base mr-4 ">
+                <b>Optjen 5 point</b> hos club Matas
+              </h4>
+              <button className="py-2 px-8  text-matasBlue-900 ring-2 ring-matasBlue-900 rounded-md m-4 ">
+                <p className="text-xs sm:text-base lg:text-base h-fit">
+                  GEM DINE SVAR
+                </p>
+              </button>
             </div>
-            <div>
-              <h3>Præferencer</h3>
-              <p>{ref.current.important}</p>
-            </div>
-            <div>
-              <h3>Alder</h3>
-              <p>{ref.current.age}</p>
-            </div>
-            <div>
-              <h3>Hudtype</h3>
-              <p>{ref.current.skinType}</p>
-            </div>
-            <button className="p-2 sm:p-3 text-matasWhite-900 bg-matasBlue-900 rounded-md mt-10 w-full">
-              <p className="text-xs sm:text-base lg:text-base">GEM DINE SVAR</p>
-            </button>
           </section>
-          <h2>Dine Resultater: </h2>
+
+          <h2 className="font-serif font-semibold mt-5 text-2xl sm:text-2xl md:text-3xl lg:text-3xl text-matasBlue-900">
+            Dine Resultater{" "}
+          </h2>
           <section className={styles.grid}>
             {productData.slice(0, 3).map((product) => (
               <Card
