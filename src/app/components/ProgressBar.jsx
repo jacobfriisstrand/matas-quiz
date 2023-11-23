@@ -18,7 +18,7 @@ const ProgressBar = ({ step }) => (
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: "#002643",
+          colorPrimary: "#F090B3",
           colorText: "#002643",
         },
       }}
